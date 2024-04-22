@@ -1,4 +1,4 @@
-# Master-s-Degree-Thesis
+# Master-s-Degree-Thesis\
 This repository is made to share codes for a master's degree thesis in sub-network discovery at the University of Padua.
 Codes are commented on properly, and here are relevant explanations.
 The project started with three datasets, snvs.tsv, Compendium_Cancer_Gene.txt ,and samples_labels.txt. Here is a brief description of them:\
