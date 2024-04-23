@@ -2,7 +2,7 @@
 
 
 This repository is made to share codes for a master's degree thesis in sub-network discovery at the University of Padua.\
-Codes are commented on properly, and here are relevant explanations.\
+Codes are commented on properly, and here are relevant explanations.
 
 
 The project started with three datasets, snvs.tsv, Compendium_Cancer_Gene.txt ,and samples_labels.txt. Here is a brief description of them:\
@@ -22,7 +22,7 @@ After making the dataset in the previous step, it is now possible to make some p
 model1 -> Logistic Regression.\
 model2 -> Random Forest with the number of estimators equal to 100.\
 model3 -> SVC with C=1.\
-Also, soft voting and hard voting methods are leveraged to determine accuracy.\
+Also, soft voting and hard voting methods are leveraged to determine accuracy.
 
 
 
