@@ -7,5 +7,6 @@ The project started with three datasets, snvs.tsv, Compendium_Cancer_Gene.txt ,a
 -Compendium_Cancer_Gene.txt:\ This dataset is a list of genes (568) potentially associated with various cancers.
 -samples_labels.txt:\ The file  is structured in a tabular format where each row represents a sample associated with a specific type of cancer. In total, there are 3110 samples with 11 different cancer types (BRCA, KIRC, OV, HNSC, GBM, UCEC, LAML, COADREAD, LUAD, LUSC, BLCA).
 
-First the 
+By using these three files, a dataset is created named make_the_dataset.py:/ 
+
 Updating...
