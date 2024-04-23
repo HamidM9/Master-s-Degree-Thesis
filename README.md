@@ -17,8 +17,12 @@ This dataset uses the samples as the indexes( first column in samples_labels.txt
 
 After making the dataset in the previous step, it is now possible to make some predictions with classic ML methods. In the primary_classic_methods.py, there is a procedure as follows:/
 -Cancer types are encoded into numeric values.
--"Logistic Regression", "Decision Tree", "SVM" with 'linear', 'poly', 'rbf', and sigmoid kernels with four different numbers of Cs(0.1,1,10,100), "Random Forest" with seven different numbers of estimators(1,10,40,50,100,150,200), and an ensemble method are implemented.
-
+-"Logistic Regression", "Decision Tree", "SVM" with 'linear', 'poly', 'rbf', and sigmoid kernels with four different numbers of Cs(0.1,1,10,100), "Random Forest" with seven different numbers of estimators(1,10,40,50,100,150,200), and an ensemble method are implemented.\
+-Ensemble method has three different parts:\
+model1 -> Logistic Regression.\
+model2 -> Random Forest with the number of estimators equal to 100.\
+model3 -> SVC with C=1.\
+Also, soft voting and hard voting methods are leveraged to determine accuracy.\
 
 
 
