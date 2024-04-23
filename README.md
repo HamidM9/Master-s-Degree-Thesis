@@ -11,11 +11,11 @@ The project started with three datasets, snvs.tsv, Compendium_Cancer_Gene.txt ,a
 -samples_labels.txt:\ The file  is structured in a tabular format where each row represents a sample associated with a specific type of cancer. In total, there are 3110 samples with 11 different cancer types (BRCA, KIRC, OV, HNSC, GBM, UCEC, LAML, COADREAD, LUAD, LUSC, BLCA).
 
 
-By using these three files, a dataset is created named make_the_dataset.py:/ 
+By using these three files, a dataset is created named make_the_dataset.py:\
 This dataset uses the samples as the indexes( first column in samples_labels.txt) and the genes in Compendium_Cancer_Gene.txt as features. Then, check each feature with the corresponding sample in snvs.tsv file, if existing, puts 1. If not, put zero. Finally, the last feature is the cancer type which is from matching the samples with samples_labels.txt/
 
 
-After making the dataset in the previous step, it is now possible to make some predictions with classic ML methods. In the primary_classic_methods.py, there is a procedure as follows:/
+After making the dataset in the previous step, it is now possible to make some predictions with classic ML methods. In the primary_classic_methods.py, there is a procedure as follows:\
 -Cancer types are encoded into numeric values.
 -"Logistic Regression", "Decision Tree", "SVM" with 'linear', 'poly', 'rbf', and sigmoid kernels with four different numbers of Cs(0.1,1,10,100), "Random Forest" with seven different numbers of estimators(1,10,40,50,100,150,200), and an ensemble method are implemented.\
 -Ensemble method has three different parts:\
