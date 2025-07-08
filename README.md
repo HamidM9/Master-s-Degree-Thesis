@@ -2,7 +2,7 @@
 
 # Master's Degree Thesis
 
-This repository contains the code developed for a master's degree thesis on **subnetwork discovery and cancer type prediction** in gene-gene interaction networks, carried out at the **University of Padua**.
+This repository contains the code developed for a master's degree thesis on **subnetwork discovery and cancer type prediction** in gene-gene interaction networks, carried out at the University of Padua.
 
 The code is well-commented and supplemented with relevant explanations.
 
@@ -13,7 +13,7 @@ to be updated
 
 The second part of this thesis focuses on engineering a structured dataset from mutation data and gene-gene interaction networks to enable cancer type classification using machine learning.
 
-### 📦 Input Files
+### Input Files
 
 - **`snvs.tsv`**  
   Contains 3,110 samples and 19,424 SNVs (single-nucleotide variants).
@@ -27,7 +27,7 @@ The second part of this thesis focuses on engineering a structured dataset from 
 
 ---
 
-### 🛠 Dataset Construction
+### Dataset Construction
 
 The dataset is built using `make_the_dataset.py` by combining all three files:
 
@@ -37,20 +37,20 @@ The dataset is built using `make_the_dataset.py` by combining all three files:
 
 ---
 
-### ✨ Feature Types
+### Feature Types
 
 To enrich the dataset, network-base, **extrinsic** and **intrinsic (topological)** features are engineered:
-### 🧬 Subnetwork-Based Feature Engineering
+### Subnetwork-Based Feature Engineering
 
 To enhance the biological interpretability and focus of feature engineering, this project incorporates **subnetworks discovered using the DAMOKLE algorithm**.
 
-#### ⚙️ DAMOKLE Execution
+#### DAMOKLE Execution
 
 We run the script `DAMOKLE-Python3-damokle-withoutloop.py` with multiple parameter configurations to generate diverse sets of **mutated subnetworks** from the gene-gene interaction network.
 
 Each run produces subnetworks that are potentially enriched in cancer-relevant mutations.
 
-#### 🧵 Subnetwork Processing Pipeline
+#### Subnetwork Processing Pipeline
 
 Two utility scripts are used to post-process the DAMOKLE output:
 
@@ -60,7 +60,7 @@ Two utility scripts are used to post-process the DAMOKLE output:
 - `extract_unique_genes_from_damokle_output.py`  
   Aggregates and deduplicates gene lists across all extracted subnetworks to produce a final set of **unique genes**.
 
-#### 🧪 Gene Set Variants for Feature Selection
+#### Gene Set Variants for Feature Selection
 
 Three distinct gene sets are used as feature bases:
 
@@ -74,7 +74,7 @@ These DAMOKLE-informed features introduce network-driven biological context into
 
 To add new features and fill them with zeros, we use the add_3_new_columns.py file, which can be easily modified to add more columns in different locations of the dataset.
 
-#### 🔹 Extrinsic Features
+#### Extrinsic Features
 
 These features are derived directly from mutation data and biological annotations:
 
@@ -101,7 +101,7 @@ This script:
 The classification structure is modular — the script can be easily extended to include other gene categories such as **fate**, **survival**, and **maintenance**, simply by modifying the classification list and data mapping.
 
 These extrinsic features reflect both the **statistical mutation patterns** and **biological functions** of genes relevant to cancer development.
-#### 🔸 Intrinsic (Topological) Features
+#### Intrinsic (Topological) Features
 
 Extracted from the gene-gene interaction network using graph-based analysis:
 
@@ -116,7 +116,7 @@ Each gene is enriched with these graph-based scores, making the feature space bi
 
 ---
 
-### 🤖 Classification Methods
+### Classification Methods
 
 Implemented in `accuracy.py`:
 
@@ -132,7 +132,7 @@ Implemented in `accuracy.py`:
 
 ---
 
-### 🔗 Ensemble Learning
+### Ensemble Learning
 
 An ensemble model uses both **soft voting** and **hard voting**, combining:
 
@@ -142,20 +142,20 @@ An ensemble model uses both **soft voting** and **hard voting**, combining:
 
 ---
 
-### 📊 Numerical Results
+### Numerical Results
 
 Feature combinations (binary, topological, extrinsic) were evaluated on classification tasks. Using engineered features significantly improved prediction accuracy across multiple models, especially when topological features were included.
 
 ---
 ---
 
-## 🔬 Statistical Validation
+## Statistical Validation
 
 To confirm the effectiveness of feature engineering and model enhancements, a ** One-sided Wilcoxon signed-rank test"** is used to statistically evaluate performance improvements.
 
 The script `wilcoxon_test.py` performs a one-sided Wilcoxon signed-rank test to compare accuracy before and after applying specific features.
 
-### 📄 How It Works
+### How It Works
 
 - Reads metric values (one per line) from two text files:  
   - `before.txt` (baseline performance)  
