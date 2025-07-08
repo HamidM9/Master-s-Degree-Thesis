@@ -1,30 +1,56 @@
-# Master-s-Degree-Thesis
+# Master's Degree Thesis
 
+This repository contains the code developed for a master's degree thesis on **subnetwork discovery and cancer type prediction** in gene-gene interaction networks, carried out at the **University of Padua**.
 
-This repository is made to share code for a master's degree thesis in sub-network discovery and cancer type prediction in gene-gene interaction networks at the University of Padua.\
-The codes are commented on properly, and here are relevant explanations.
+The code is well-commented and supplemented with relevant explanations.
 
+## 📁 Datasets
 
-The project started with three datasets, snvs.tsv, Compendium_Cancer_Gene.txt ,and samples_labels.txt. Here is a brief description of them:\
--snvs.tsv: It contains data on single-nucleotide variants (SNVs), the most common genetic variation among people. These variants occur when a single nucleotide in the genome sequence is altered. A file with a .tsv extension indicates that it is a tab-separated values file, typically used to store table data. This dataset contains 3110 samples and 19424 different mutations.\
--Compendium_Cancer_Gene.txt:\ This dataset is a list of genes (568) potentially associated with various cancers.
--samples_labels.txt:\ The file  is structured in a tabular format where each row represents a sample associated with a specific type of cancer. In total, there are 3110 samples with 11 different cancer types (BRCA, KIRC, OV, HNSC, GBM, UCEC, LAML, COADREAD, LUAD, LUSC, BLCA).
+The project is based on three key datasets:
 
+- **`snvs.tsv`**  
+  Contains data on single-nucleotide variants (SNVs), the most common form of genetic variation. SNVs occur when a single nucleotide in the genome sequence is altered. This dataset includes **3,110 samples** and **19,424 different mutations**.
 
-By using these three files, a dataset is created named make_the_dataset.py:\
-This dataset uses the samples as the indexes( first column in samples_labels.txt) and the genes in Compendium_Cancer_Gene.txt as features. Then, check each feature with the corresponding sample in snvs.tsv file, if existing, puts 1. If not, put zero. Finally, the last feature is the cancer type which is from matching the samples with samples_labels.txt/
+- **`Compendium_Cancer_Gene.txt`**  
+  A list of **568 genes** potentially associated with various cancers.
 
+- **`samples_labels.txt`**  
+  A tabular file where each row represents a sample and its corresponding cancer type. It includes **3,110 samples** across **11 cancer types**:
+  - BRCA, KIRC, OV, HNSC, GBM, UCEC, LAML, COADREAD, LUAD, LUSC, BLCA
 
-After making the dataset in the previous step, it is now possible to make some predictions with classic ML methods. In the primary_classic_methods.py, there is a procedure as follows:\
--Cancer types are encoded into numeric values.
--"Logistic Regression", "Decision Tree", "SVM" with 'linear', 'poly', 'rbf', and sigmoid kernels with four different numbers of Cs(0.1,1,10,100), "Random Forest" with seven different numbers of estimators(1,10,40,50,100,150,200), and an ensemble method are implemented.\
--Ensemble method has three different parts:\
-model1 -> Logistic Regression.\
-model2 -> Random Forest with the number of estimators equal to 100.\
-model3 -> SVC with C=1.\
-Also, soft voting and hard voting methods are leveraged to determine accuracy.
+## 🛠 Dataset Creation
 
+The script `make_the_dataset.py` processes the above files to construct a machine learning-ready dataset:
 
+- Samples (from `samples_labels.txt`) are set as indices.
+- Features correspond to genes listed in `Compendium_Cancer_Gene.txt`.
+- For each sample-gene pair:
+  - If the mutation exists in `snvs.tsv`, a **1** is assigned.
+  - Otherwise, a **0** is assigned.
+- The cancer type is added as the final column based on `samples_labels.txt`.
 
+## 🤖 Classification and Prediction
 
-Updating...
+The script `primary_classic_methods.py` applies classic machine learning models for cancer type prediction:
+
+- **Cancer types are label-encoded**
+- Models used:
+  - Logistic Regression
+  - Decision Tree
+  - Support Vector Machine (SVM) with:
+    - Kernels: linear, polynomial, RBF, sigmoid
+    - C values: 0.1, 1, 10, 100
+  - Random Forest with:
+    - Estimators: 1, 10, 40, 50, 100, 150, 200
+
+### 🔗 Ensemble Model
+
+An ensemble approach using **soft voting** and **hard voting** is also implemented:
+
+- `model1`: Logistic Regression  
+- `model2`: Random Forest (`n_estimators = 100`)  
+- `model3`: SVM (`C = 1`)
+
+---
+
+Feel free to explore, fork, or contribute!
