@@ -45,24 +45,31 @@ To add new features and fill them with zeros, we use the add_3_new_columns.py fi
 
 #### 🔹 Extrinsic Features
 
-These are derived directly from mutation data and biological annotations:
+These features are derived directly from mutation data and biological annotations:
 
 - **Binary mutation presence** (1/0) for each gene
 - **Mutation frequency per gene**
 - **Cancer type labels** for supervised learning
-- **Gene-level biological roles**, such as:
-  - **TSG** (Tumor Suppressor Gene)
+- **Gene-level biological roles**, including:
   - **Oncogene**
+  - **TSG** (Tumor Suppressor Gene)
   - **Fusion gene**
   - **Fate**
   - **Survival**
   - **Maintenance**
 
-These features reflect both the statistical mutation patterns and known biological functions of genes relevant to cancer development.
+To count the number of mutated genes per category (e.g., oncogene, TSG, fusion) in each sample, the script `count_oncogene_TSG_fusion.py` is used.
 
+This script:
+- Loads mutation data from a CSV file.
+- Loads gene classification mappings from `filtered_gene_classifications.txt`.
+- Iterates through all mutated genes in each sample.
+- Increments counts for each gene that belongs to a known class.
+- Writes the updated dataset with added columns for counts of **oncogene**, **TSG**, and **fusion** genes.
 
-These features reflect mutation patterns and sample-level characteristics.
+The classification structure is modular — the script can be easily extended to include other gene categories such as **fate**, **survival**, and **maintenance**, simply by modifying the classification list and data mapping.
 
+These extrinsic features reflect both the **statistical mutation patterns** and **biological functions** of genes relevant to cancer development.
 #### 🔸 Intrinsic (Topological) Features
 
 Extracted from the gene-gene interaction network using graph-based analysis:
