@@ -6,88 +6,94 @@ The code is well-commented and supplemented with relevant explanations.
 
 This thesis is composed of two main parts: **Subnetwork Discovery** and **Feature Engineering**.
 
----
+## 🧠 Feature Engineering
 
-## 📁 Datasets
+The second part of this thesis focuses on engineering a structured dataset from mutation data and gene-gene interaction networks to enable cancer type classification using machine learning.
 
-The project is based on three key datasets:
+### 📦 Input Files
 
 - **`snvs.tsv`**  
-  Contains data on single-nucleotide variants (SNVs), the most common form of genetic variation. SNVs occur when a single nucleotide in the genome sequence is altered. This dataset includes **3,110 samples** and **19,424 different mutations**.
+  Contains 3,110 samples and 19,424 SNVs (single-nucleotide variants).
 
 - **`Compendium_Cancer_Gene.txt`**  
-  A list of **568 genes** potentially associated with various cancers.
+  A curated list of 568 genes known to be related to cancer.
 
 - **`samples_labels.txt`**  
-  A tabular file where each row represents a sample and its corresponding cancer type. It includes **3,110 samples** across **11 cancer types**:  
+  Maps each sample to one of 11 cancer types:  
   BRCA, KIRC, OV, HNSC, GBM, UCEC, LAML, COADREAD, LUAD, LUSC, BLCA
 
 ---
 
-## 🧪 Dataset Creation
+### 🛠 Dataset Construction
 
-The script `make_the_dataset.py` processes the above files to construct a machine learning-ready dataset:
+The dataset is built using `make_the_dataset.py` by combining all three files:
 
-- Samples (from `samples_labels.txt`) are used as indices.
-- Features correspond to genes listed in `Compendium_Cancer_Gene.txt`.
-- For each sample-gene pair:
-  - If the mutation exists in `snvs.tsv`, a **1** is assigned.
-  - Otherwise, a **0** is assigned.
-- The cancer type is added as the final column based on `samples_labels.txt`.
+- Rows are samples, and columns are gene mutation indicators (1 if mutated, 0 otherwise).
+- Each gene from `Compendium_Cancer_Gene.txt` becomes a binary feature.
+- Cancer type is added as the final label column.
 
 ---
 
-## 🤖 Classification and Prediction
+### ✨ Feature Types
 
-The script `primary_classic_methods.py` applies traditional machine learning models for cancer type classification:
+To enrich the dataset, both **extrinsic** and **intrinsic (topological)** features are engineered:
 
-- **Cancer types are label-encoded**
-- Models implemented:
+#### 🔹 Extrinsic Features
+
+These are derived directly from mutation data:
+
+- **Binary mutation presence** (1/0) for each gene
+- **Mutation frequency per gene**
+- **Sample-specific mutation profiles**
+- **Cancer type labels** for supervised learning
+
+These features reflect mutation patterns and sample-level characteristics.
+
+#### 🔸 Intrinsic (Topological) Features
+
+Extracted from the gene-gene interaction network using graph-based analysis:
+
+- **Degree Centrality** — number of direct connections
+- **Betweenness Centrality** — importance based on shortest paths
+- **Closeness Centrality** — inverse of total distance to all other nodes
+- **Clustering Coefficient** — local neighborhood density
+- **PageRank** — importance via link structure
+- **Eigenvector Centrality** — influence of a node in terms of the importance of neighbors
+
+Each gene is enriched with these graph-based scores, making the feature space biologically meaningful.
+
+---
+
+### 🤖 Classification Methods
+
+Implemented in `primary_classic_methods.py`:
+
+- **Label encoding** for cancer types
+- Models used:
   - Logistic Regression
   - Decision Tree
-  - Support Vector Machine (SVM) with:
-    - Kernels: linear, polynomial, RBF, sigmoid
-    - C values: 0.1, 1, 10, 100
-  - Random Forest with:
-    - Estimators: 1, 10, 40, 50, 100, 150, 200
+  - Support Vector Machine (SVM)  
+    - Kernels: `linear`, `poly`, `rbf`, `sigmoid`  
+    - C values: `0.1`, `1`, `10`, `100`
+  - Random Forest  
+    - Estimators: `1`, `10`, `40`, `50`, `100`, `150`, `200`
 
-### 🔗 Ensemble Model
+---
 
-An ensemble approach using both **soft voting** and **hard voting** is implemented with the following components:
+### 🔗 Ensemble Learning
+
+An ensemble model uses both **soft voting** and **hard voting**, combining:
 
 - `model1`: Logistic Regression  
-- `model2`: Random Forest (`n_estimators = 100`)  
-- `model3`: SVM (`C = 1`)
+- `model2`: Random Forest (`n_estimators=100`)  
+- `model3`: SVM (`C=1`)
 
 ---
 
-## 🧠 Feature Engineering
+### 📊 Numerical Results
 
-The second part of this thesis is dedicated to **feature engineering**, aiming to enhance the accuracy of cancer type prediction models. Two main types of features were engineered from the gene-gene interaction network and mutation data:
-
-### 🔹 Topological Features
-
-Topological features capture the structural role of each gene within the gene-gene interaction network. These features were computed using graph-based measures, including:
-
-- **Degree Centrality** — number of direct connections a gene has.
-- **Clustering Coefficient** — how densely connected a gene’s neighbors are.
-- **Betweenness Centrality** — how often a gene appears on the shortest paths between other genes.
-- **Closeness Centrality** — average distance from a gene to all other genes in the network.
-- **PageRank** — measures gene importance based on the global link structure.
-
-These features reflect the functional and relational significance of genes in the biological network.
-
-### 🔹 Extrinsic Features
-
-Extrinsic features are derived from the mutation data and the sample labels. These include:
-
-- **Mutation frequency per gene** — how frequently each gene is mutated across samples.
-- **Binary mutation presence** — a binary matrix indicating whether a gene is mutated (1) or not (0) in a given sample.
-- **Sample-specific mutation vectors** — capturing the unique mutation profile of each sample.
-- **Cancer type labels** — used as target classes for supervised learning.
-
-By combining **topological** and **extrinsic** features, the dataset becomes richer and more informative, enabling more effective machine learning models for **multi-class cancer type classification**.
+Feature combinations (binary, topological, extrinsic) were evaluated on classification tasks. Using engineered features significantly improved prediction accuracy across multiple models — especially when topological features were included.
 
 ---
 
-Feel free to explore, fork, or contribute!
+By combining biological mutation data with network-based structural features, this feature engineering pipeline generates a biologically informed and machine learning-ready dataset for effective multi-class cancer type classification.
