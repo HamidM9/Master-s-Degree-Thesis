@@ -142,9 +142,7 @@ An ensemble model uses both **soft voting** and **hard voting**, combining:
 
 ### Numerical Results
 
-Feature combinations (binary, topological, extrinsic) were evaluated on classification tasks. Using engineered features significantly improved prediction accuracy across multiple models, especially when topological features were included.
-
----
+To be updated...
 ---
 
 ## Statistical Validation
@@ -164,9 +162,5 @@ The script `wilcoxon_test.py` performs a one-sided Wilcoxon signed-rank test to 
 - Saves the output to:  
   `wilcoxon_results_one_sided/senza_counts/`
 
-### 🧪 Example Usage
-
-```python
-perform_wilcoxon_test("results/before.txt", "results/after.txt", alternative="greater")
 
 ### UPDATING...
