@@ -39,7 +39,38 @@ The dataset is built using `make_the_dataset.py` by combining all three files:
 
 ### ✨ Feature Types
 
-To enrich the dataset, both **extrinsic** and **intrinsic (topological)** features are engineered:
+To enrich the dataset, network-base, **extrinsic** and **intrinsic (topological)** features are engineered:
+### 🧬 Subnetwork-Based Feature Engineering
+
+To enhance the biological interpretability and focus of feature engineering, this project incorporates **subnetworks discovered using the DAMOKLE algorithm**.
+
+#### ⚙️ DAMOKLE Execution
+
+We run the script `DAMOKLE-Python3-damokle-withoutloop.py` with multiple parameter configurations to generate diverse sets of **mutated subnetworks** from the gene-gene interaction network.
+
+Each run produces subnetworks that are potentially enriched in cancer-relevant mutations.
+
+#### 🧵 Subnetwork Processing Pipeline
+
+Two utility scripts are used to post-process the DAMOKLE output:
+
+- `extract_subnetworks_from_damokle_output.py`  
+  Extracts all subnetworks from DAMOKLE result files.
+
+- `extract_unique_genes_from_damokle_output.py`  
+  Aggregates and deduplicates gene lists across all extracted subnetworks to produce a final set of **unique genes**.
+
+#### 🧪 Gene Set Variants for Feature Selection
+
+Three distinct gene sets are used as feature bases:
+
+1. **DAMOKLE-only** — genes found exclusively in the discovered subnetworks.
+2. **Compendium-only** — curated cancer genes from `Compendium_Cancer_Gene.txt`.
+3. **Union set** — the combined set of DAMOKLE and Compendium genes.
+
+Each set serves as a different feature subset, allowing for comparative analysis of their impact on classification performance.
+
+These DAMOKLE-informed features introduce network-driven biological context into the dataset, offering a functional and mutation-aware dimension to the learning pipeline.
 
 To add new features and fill them with zeros, we use the add_3_new_columns.py file, which can be easily modified to add more columns in different locations of the dataset.
 
