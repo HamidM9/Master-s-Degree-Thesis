@@ -95,7 +95,7 @@ This script:
 - Loads mutation data from a CSV file.
 - Loads gene classification mappings from `filtered_gene_classifications.txt`.
 - Iterates through all mutated genes in each sample.
-- Increments counts for each gene that belongs to a known class.
+- Increments the count for each gene that belongs to a known class.
 - Writes the updated dataset with added columns for counts of **oncogene**, **TSG**, and **fusion** genes.
 
 The classification structure is modular — the script can be easily extended to include other gene categories such as **fate**, **survival**, and **maintenance**, simply by modifying the classification list and data mapping.
@@ -109,8 +109,6 @@ Extracted from the gene-gene interaction network using graph-based analysis:
 - **Betweenness Centrality** — importance based on shortest paths
 - **Closeness Centrality** — inverse of total distance to all other nodes
 - **Clustering Coefficient** — local neighborhood density
-- **PageRank** — importance via link structure
-- **Eigenvector Centrality** — influence of a node in terms of the importance of neighbors
 
 Each gene is enriched with these graph-based scores, making the feature space biologically meaningful.
 
