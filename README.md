@@ -45,10 +45,23 @@ To enrich the dataset, both **extrinsic** and **intrinsic (topological)** featur
 
 These are derived directly from mutation data:
 
+#### 🔹 Extrinsic Features
+
+These are derived directly from mutation data and biological annotations:
+
 - **Binary mutation presence** (1/0) for each gene
 - **Mutation frequency per gene**
-- **Sample-specific mutation profiles**
 - **Cancer type labels** for supervised learning
+- **Gene-level biological roles**, such as:
+  - **TSG** (Tumor Suppressor Gene)
+  - **Oncogene**
+  - **Fusion gene**
+  - **Fate**
+  - **Survival**
+  - **Maintenance**
+
+These features reflect both the statistical mutation patterns and known biological functions of genes relevant to cancer development.
+
 
 These features reflect mutation patterns and sample-level characteristics.
 
