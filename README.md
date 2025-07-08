@@ -7,8 +7,9 @@ This repository contains the code developed for a master's degree thesis on **su
 The code is well-commented and supplemented with relevant explanations.
 
 This thesis is composed of two main parts: **Subnetwork Discovery** and **Feature Engineering**.
-
-## 🧠 Feature Engineering
+## Part I: Subnetwork Discovery
+to be updated
+## Part II: Feature Engineering
 
 The second part of this thesis focuses on engineering a structured dataset from mutation data and gene-gene interaction networks to enable cancer type classification using machine learning.
 
