@@ -41,9 +41,7 @@ The dataset is built using `make_the_dataset.py` by combining all three files:
 
 To enrich the dataset, both **extrinsic** and **intrinsic (topological)** features are engineered:
 
-#### 🔹 Extrinsic Features
-
-These are derived directly from mutation data:
+To add new features and fill them with zeros, we use the add_3_new_columns.py file, which can be easily modified to add more columns in different locations of the dataset.
 
 #### 🔹 Extrinsic Features
 
