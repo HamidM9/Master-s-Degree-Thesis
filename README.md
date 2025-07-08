@@ -1,4 +1,4 @@
-### UPDATING
+### UPDATING...
 
 # Master's Degree Thesis
 
@@ -98,4 +98,4 @@ Feature combinations (binary, topological, extrinsic) were evaluated on classifi
 
 ---
 
-### UPDATING
+### UPDATING...
