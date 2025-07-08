@@ -80,7 +80,7 @@ Each gene is enriched with these graph-based scores, making the feature space bi
 
 ### 🤖 Classification Methods
 
-Implemented in `primary_classic_methods.py`:
+Implemented in `accuracy.py`:
 
 - **Label encoding** for cancer types
 - Models used:
