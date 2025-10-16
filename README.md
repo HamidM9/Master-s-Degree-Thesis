@@ -1,8 +1,7 @@
-### UPDATING...
 
 # Master's Degree Thesis
 
-This repository contains the code developed for a master's degree thesis on **subnetwork discovery and cancer type prediction** in gene-gene interaction networks, carried out at the University of Padua.
+This repository contains the code developed for a master's degree thesis on **subnetwork discovery and feature engineering for cancer-type prediction** in gene-gene interaction networks, carried out at the University of Padua.
 
 The code is well-commented and supplemented with relevant explanations.
 
@@ -142,7 +141,6 @@ An ensemble model uses both **soft voting** and **hard voting**, combining:
 
 ### Numerical Results
 
-To be updated...
 ---
 
 ## Statistical Validation
@@ -163,4 +161,3 @@ The script `wilcoxon_test.py` performs a one-sided Wilcoxon signed-rank test to 
   `wilcoxon_results_one_sided/senza_counts/`
 
 
-### UPDATING...
