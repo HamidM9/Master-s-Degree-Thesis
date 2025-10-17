@@ -7,7 +7,45 @@ The code is well-commented and supplemented with relevant explanations.
 
 This thesis is composed of two main parts: **Subnetwork Discovery** and **Feature Engineering**.
 ## Part I: Subnetwork Discovery
-to be updated
+
+This part of the thesis focuses on the discovery of **differentially mutated subnetworks** within a gene–gene interaction network.
+
+### Goal
+
+To identify **functionally significant subnetworks** — groups of interacting genes that are collectively mutated in a cancer-type–specific manner.  
+These subnetworks capture biologically meaningful mutation patterns that are not evident when analyzing individual genes.
+
+### Algorithm Used: DAMOKLE
+
+We use the **DAMOKLE** algorithm (*Differentially Mutated Subnetworks with Mutual Exclusivity*) to detect subnetworks that show:
+
+- High mutation frequency in one cancer type compared to others  
+- **Mutual exclusivity**, meaning that genes within the same subnetwork are rarely mutated together in the same sample
+
+Such subnetworks may represent alternative pathways contributing to the same oncogenic process.
+
+### Input Data
+
+- **Gene–gene interaction network** (nodes = genes, edges = interactions)  
+- **Binary mutation profiles** for thousands of tumor samples across multiple cancer types
+
+### Output
+
+- A list of **differentially mutated subnetworks**, each represented by a set of genes that form a connected module in the network  
+- These subnetworks highlight candidate pathways or modules relevant to specific tumor types
+
+### Workflow
+
+1. Run the DAMOKLE algorithm with multiple parameter configurations to discover diverse subnetworks.  
+2. Extract and organize subnetworks using dedicated post-processing scripts.  
+3. Aggregate and deduplicate all genes across subnetworks to obtain a final set of unique genes.  
+4. Use the discovered subnetworks as a **biological foundation** for the next stage — *Feature Engineering*.
+
+### Summary
+
+Subnetwork discovery provides a **network-driven view** of cancer mutations.  
+By mapping mutations onto gene interaction networks and identifying cohesive, cancer-specific modules, we obtain biologically interpretable building blocks that are later transformed into features for machine learning–based cancer type prediction.
+
 ## Part II: Feature Engineering
 
 The second part of this thesis focuses on engineering a structured dataset from mutation data and gene-gene interaction networks to enable cancer type classification using machine learning.
